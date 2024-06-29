@@ -24,6 +24,7 @@ openai
 
 # deploy requirements
 gunicorn
+uvicorn
 psycopg2-binary
 whitenoise[brotli]
 dj-database-url
