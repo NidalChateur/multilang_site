@@ -161,7 +161,7 @@ class ForgotPassword(View):
         return """
         <html>
         <body>
-            <p>{hello} {username},</p> 
+            <p>{hello} {username},</p>
             <br><br>
             <p>{reset_info}</p>
             <p><a href="{reset_link}">{reset_button}</a></p>
@@ -169,7 +169,6 @@ class ForgotPassword(View):
             <br><br>
             <p>{thank_you}</p>
             <p>Blogs Team</p>
-            
         </body>
         </html>
         """.format(

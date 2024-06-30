@@ -1,3 +1,6 @@
+# dependencies
+poetry
+
 # backend framework
 django
 
@@ -25,3 +28,7 @@ openai
 # deploy requirements
 dj-database-url
 whitenoise[brotli]
+
+# linting
+flake8
+flake8-html

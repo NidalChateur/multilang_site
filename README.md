@@ -1,3 +1,10 @@
+[![Python](https://raw.githubusercontent.com/NidalChateur/badges/779ce02cc0ce5bdc16ca2fe297b1229d4e5068d3/svg/python.svg)](https://www.python.org/) 
+[![Django](https://img.shields.io/badge/django-5.0.6-blue.svg?logo=django)](https://www.djangoproject.com/)
+[![Poetry](https://img.shields.io/badge/poetry-1.8.3-blue.svg?logo=Poetry)](https://python-poetry.org/)
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Flake8](https://img.shields.io/badge/linting-flake8-yellowgreen.svg?logo=python)](https://github.com/pycqa/flake8)
+[![Docker](https://img.shields.io/badge/dockerhub-images-important.svg?logo=docker)](https://hub.docker.com/r/nidalchateur/multilang_site)
+
 # Blogs
 
 ### Presentation 

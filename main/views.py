@@ -52,7 +52,7 @@ class ListPosts(View):
         else:
             posts = Post.objects.all().order_by("-modification_date")
 
-        page_obj = paginator(request, posts, obj_per_page=5)
+        page_obj = paginator(request, posts, obj_per_page=10)
 
         return render(request, "posts_list.html", {"page_obj": page_obj})
 

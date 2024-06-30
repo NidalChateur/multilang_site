@@ -3,6 +3,7 @@ import uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from PIL import Image
 
 from multilang_site.utils.encryptor import Encryptor
@@ -13,8 +14,10 @@ class User(AbstractUser):
     # USERNAME_FIELD = "email" ( /!\ email is currently encrypted )
     # REQUIRED_FIELDS = ["username"]
 
-    email = models.EmailField(unique=True)
-    image = models.ImageField(null=True, blank=True)
+    first_name = models.CharField(_("first name"), max_length=255, blank=True)
+    last_name = models.CharField(_("last name"), max_length=255, blank=True)
+    email = models.EmailField(unique=True, max_length=255)
+    image = models.ImageField(null=True, blank=True, max_length=255)
     modification_date = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
