@@ -5,11 +5,11 @@
 [![Flake8](https://img.shields.io/badge/linting-flake8-yellowgreen.svg?logo=python)](https://github.com/pycqa/flake8)
 [![Docker](https://img.shields.io/badge/dockerhub-images-important.svg?logo=docker)](https://hub.docker.com/r/nidalchateur/multilang_site)
 
-# Blogs
+#  <a href="https://multilang-site-1-joro.onrender.com">Blogs</a>
 
 ### Presentation 
 
-Blogs is a multilingual application built with :
+Blogs is a multilingual deployed application built with :
 
 - Django internationalization (i18n) for language support.
 - Django Mail and JWT for password reset functionality.
