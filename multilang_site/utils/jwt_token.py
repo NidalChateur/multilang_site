@@ -1,3 +1,4 @@
+import os
 from datetime import datetime, timedelta, timezone
 
 import jwt
@@ -6,6 +7,7 @@ from cryptography.hazmat.primitives import serialization
 from django.conf import settings
 
 JWT_PASSWORD = settings.JWT_PASSWORD
+BASE_DIR = settings.BASE_DIR
 
 
 class Jwt:
@@ -25,7 +27,15 @@ class Jwt:
         keep secret
         """
 
-        with open("private_key.pem", "rb") as key_file:
+        filename = "public_key.pem"
+        file_path = BASE_DIR / filename
+        if not os.path.exists(file_path):
+            file_path = f"/etc/secrets/{filename}"
+
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Private key file not found at {file_path}")
+
+        with open(file_path, "rb") as key_file:
             private_key = serialization.load_pem_private_key(
                 key_file.read(),
                 password=JWT_PASSWORD,
@@ -44,7 +54,12 @@ class Jwt:
         keep public
         """
 
-        with open("public_key.pem", "rb") as key_file:
+        file_path = BASE_DIR / "public_key.pem"
+
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Public key file not found at {file_path}")
+
+        with open(file_path, "rb") as key_file:
             public_key = serialization.load_pem_public_key(
                 key_file.read(), backend=default_backend()
             )

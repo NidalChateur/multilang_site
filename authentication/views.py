@@ -223,7 +223,7 @@ class ForgotPassword(View):
         form = ForgotPasswordForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get("username")
-            email = form.cleaned_data.get("username")
+            email = form.cleaned_data.get("email")
 
             reset_password_url = self._generate_reset_password_url(request, username)
             email_is_sent = self._send_email(username, email, reset_password_url)

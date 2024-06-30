@@ -21,7 +21,7 @@ from .utils.create_env import create_environment_variables_file
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "RENDER" not in os.environ
-print("DEBUG :", DEBUG)
+
 
 if DEBUG:
     create_environment_variables_file()
@@ -115,8 +115,6 @@ if DEBUG:
         }
     }
 else:
-    # Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
     DATABASES = {
         "default": dj_database_url.config(
             # Replace this value with your local database's connection string.
@@ -177,8 +175,8 @@ USE_L10N = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-MEDIA_URL = "/img/"
-MEDIA_ROOT = BASE_DIR / "static/img"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

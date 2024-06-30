@@ -15,7 +15,7 @@ def create_environment_variables_file():
         with open(env_file, "w") as f:
             f.write(f"SECRET_KEY={get_random_secret_key()}\n")
             f.write(f"FERNET_KEY={Encryptor.generate_key()}\n")
-            f.write("JWT_PASSWORD=jwt_password\n")
+            f.write("JWT_PASSWORD=password\n")
 
             f.write("\n\n")
 
