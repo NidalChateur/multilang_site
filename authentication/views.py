@@ -190,6 +190,8 @@ class ForgotPassword(View):
         return True if the email  was sent
         return False the email was not sent
         """
+        if not reset_password_url:
+            return False
 
         try:
             send_mail(

@@ -31,19 +31,19 @@ Blogs is a multilingual deployed application built with :
 
 1. Install decencies
 
-    `python -m venv env` or `python3 -m venv env`
+    - `python -m venv env` or `python3 -m venv env`
 
-    `env/scripts/activate` or `source env/bin/activate`
+    - `env/scripts/activate` or `source env/bin/activate`
 
-    `pip install -m requirements/dev_freeze.txt`
+    - `pip install -m requirements/dev_freeze.txt`
 
 2. Apply migrations
 
-    `python manage.py migrate`
+    - `python manage.py migrate`
 
 3. Run
 
-    `python manage.py runserver`
+    - `python manage.py runserver`
 
 ### Translation Steps Documentation (i18n)
 

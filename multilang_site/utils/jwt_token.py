@@ -1,4 +1,3 @@
-import os
 from datetime import datetime, timedelta, timezone
 
 import jwt
@@ -27,23 +26,18 @@ class Jwt:
         keep secret
         """
 
-        filename = "private_key.pem"
-        file_path = BASE_DIR / filename
-        if not os.path.exists(file_path):
-            file_path = f"/etc/secrets/{filename}"
+        try:
+            with open(BASE_DIR / "private_key.pem", "rb") as key_file:
+                private_key = serialization.load_pem_private_key(
+                    key_file.read(),
+                    password=JWT_PASSWORD,
+                    backend=default_backend(),
+                )
 
-        if not os.path.exists(file_path):
-            error = f"JWT._return_private_key() error : Private key file not found at {file_path}"
-            raise FileNotFoundError(error)
+            return private_key
 
-        with open(file_path, "rb") as key_file:
-            private_key = serialization.load_pem_private_key(
-                key_file.read(),
-                password=JWT_PASSWORD,
-                backend=default_backend(),
-            )
-
-        return private_key
+        except Exception as e:
+            print("JWT._return_private_key() error : ", e)
 
     @classmethod
     def _return_public_key(self):
@@ -55,17 +49,16 @@ class Jwt:
         keep public
         """
 
-        file_path = BASE_DIR / "public_key.pem"
-        if not os.path.exists(file_path):
-            error = f"JWT._return_public_key() error : Public key file not found at {file_path}"
-            raise FileNotFoundError(error)
+        try:
+            with open(BASE_DIR / "public_key.pem", "rb") as key_file:
+                public_key = serialization.load_pem_public_key(
+                    key_file.read(), backend=default_backend()
+                )
 
-        with open(file_path, "rb") as key_file:
-            public_key = serialization.load_pem_public_key(
-                key_file.read(), backend=default_backend()
-            )
+            return public_key
 
-        return public_key
+        except Exception as e:
+            print("JWT._return_public_key() error : ", e)
 
     @classmethod
     def encode(self, payload_data: dict) -> str:
