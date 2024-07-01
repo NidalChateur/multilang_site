@@ -27,13 +27,14 @@ class Jwt:
         keep secret
         """
 
-        filename = "public_key.pem"
+        filename = "private_key.pem"
         file_path = BASE_DIR / filename
         if not os.path.exists(file_path):
             file_path = f"/etc/secrets/{filename}"
 
         if not os.path.exists(file_path):
-            raise FileNotFoundError(f"Private key file not found at {file_path}")
+            error = f"JWT._return_private_key() error : Private key file not found at {file_path}"
+            raise FileNotFoundError(error)
 
         with open(file_path, "rb") as key_file:
             private_key = serialization.load_pem_private_key(
@@ -55,9 +56,9 @@ class Jwt:
         """
 
         file_path = BASE_DIR / "public_key.pem"
-
         if not os.path.exists(file_path):
-            raise FileNotFoundError(f"Public key file not found at {file_path}")
+            error = f"JWT._return_public_key() error : Public key file not found at {file_path}"
+            raise FileNotFoundError(error)
 
         with open(file_path, "rb") as key_file:
             public_key = serialization.load_pem_public_key(
